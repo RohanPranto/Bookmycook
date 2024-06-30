@@ -62,7 +62,13 @@ function Profile() {
         const userRef = doc(firestore, 'users', user.uid);
         await setDoc(userRef, formData);
 
+        // Add user to the specific collection based on userType
+        const userTypeRef = doc(firestore, formData.userType === 'customer' ? 'customers' : 'cooks', user.uid);
+        await setDoc(userTypeRef, formData);
+
         setIsSaving(false);
+
+        window.location.reload();
         alert('Profile saved successfully!');
       } else {
         alert('User not logged in.');
@@ -89,9 +95,6 @@ function Profile() {
 
   return (
     <div>
-      {/* <div style={{position:"absolute", right:0 }}>
-        <Navbar />
-      </div> */}
       <div>
         <div className="row g-0">
           <div className="col-lg-6 p-5">
@@ -105,7 +108,6 @@ function Profile() {
                 <h2><i className='bx bxs-home'></i>{formData.address}</h2>
                 <h2><i className='bx bxs-category' ></i>{formData.userType}</h2>
                 <h2><i className='bx bx-world' ></i>{formData.pincode}</h2>
-                {/* <h2>{formData.userProfilePic}</h2> */}
                 <br /><br />
                 <Link className='btn btn-danger' to={formData.userType === 'cook' ? "/chefskills" : "/findcook"}>
                   Continue<i className='bx bx-right-arrow-alt'></i>
@@ -145,7 +147,6 @@ function Profile() {
                 </button>
               </form>
             )}
-            
           </div>
           <div className="col-lg-6 wallpaper" style={{height:""}}>
             <div className="profile-image text-end">

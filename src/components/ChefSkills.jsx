@@ -56,7 +56,7 @@ function ChefSkills() {
   }, []);
 
   const fetchProfileData = async (uid) => {
-    const userRef = doc(firestore, "users", uid);
+    const userRef = doc(firestore, "cooks", uid); // Changed collection name to "cook"
     const docSnap = await getDoc(userRef);
 
     if (docSnap.exists()) {
@@ -107,7 +107,6 @@ function ChefSkills() {
       });
     }
   };
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -115,7 +114,8 @@ function ChefSkills() {
       if (user) {
         setIsSaving(true);
 
-        const userRef = doc(firestore, "users", user.uid);
+        const collectionName = formData.userType === "cook" ? "cooks" : "customer";
+        const userRef = doc(firestore, collectionName, user.uid); // Adjusted collection name dynamically
         await setDoc(userRef, formData);
 
         setIsSaving(false);
@@ -489,9 +489,9 @@ function ChefSkills() {
               </div>
 
               <div className="d-grid gap-2">
-              <button type="submit" className="btn btn-danger">
-                {isSaving ? <Spinner /> : "Save Profile"}
-              </button>
+                <button type="submit" className="btn btn-danger">
+                  {isSaving ? <Spinner /> : "Save Profile"}
+                </button>
               </div>
               
             </form>
