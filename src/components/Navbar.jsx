@@ -52,7 +52,8 @@ function Navbar() {
                 Dropdown
               </a>
               <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">Action</a></li>
+                <Link className="dropdown-item" to="/findcook">Find Cook</Link>
+                <Link className="dropdown-item" to="/chefskills">Chef Skills</Link>
                 <li><a className="dropdown-item" href="#">Another action</a></li>
                 <li><a className="dropdown-item" href="#">Something else here</a></li>
               </ul>

@@ -13,6 +13,7 @@ function Profile() {
     userType: '',
     userProfilePic: '',
     pincode: '',
+    age: '',
   });
 
   const [isSaving, setIsSaving] = useState(false);
@@ -125,6 +126,11 @@ function Profile() {
                 <div className="mb-3">
                   <input type="tel" className="form-control" id="phone" name="phone" placeholder='Phone' value={formData.phone} onChange={handleChange} required />
                 </div>
+
+                <div className="mb-3">
+                  <input type="number" className="form-control" id="age" name="age" placeholder='Age' value={formData.age} onChange={handleChange} required />
+                </div>
+
                 <div className="mb-3">
                   <textarea className="form-control" id="address" name="address" placeholder='Address' value={formData.address} onChange={handleChange} required></textarea>
                 </div>
