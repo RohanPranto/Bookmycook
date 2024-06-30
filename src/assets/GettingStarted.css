@@ -1,0 +1,26 @@
+
+.getting-started-content {
+    padding: 20px; /* Example background color */
+    border-radius: 8px;
+  }
+  
+  .getting-started-content h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .getting-started-content p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .getting-started-content .btn-primary {
+    margin-top: 10px;
+  }
+  
+  .getting-started-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  

@@ -1,0 +1,86 @@
+/* font-family: "Open Sans", sans-serif;
+font-family: "Raleway", sans-serif; */
+:root {
+  --secondary: 'Open Sans', sans-serif;
+ --pacifica: 'Pacifico', cursive;
+  --primary: 'Raleway', sans-serif;
+  --red1: #C21010;
+  --red2: #dc3545;
+  --white:#FFFDE3;
+  --cream: #CFE8A9;
+}
+body{
+  background-color: #f8f9fa;
+}
+/* Navbar.css */
+.navbar-absolute {
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-link{
+  font-weight: 500;
+  font-size: 1.15rem;
+  font-family: var(--primary);
+  
+  color: white;
+}
+h1,h5{
+  font-family: var(--secondary);
+}
+h2{
+  font-family: var(--primary);
+  font-weight: 300;
+}
+.text-center h1{
+  font-family: var(--pacifica);
+  color: white;
+  font-size: 3.5rem;
+}
+.hero-div {
+  height: 60vh;
+  background-repeat: no-repeat;
+  background-image: url(/src/assets/background.png);
+  background-size: cover;
+  background-position: center;
+}
+
+span{
+  font-family: var(--pacifica);
+  color: var(--red1);
+  font-size: larger;
+}
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-info span {
+  margin-right: 10px;
+}
+
+.btn-outline-primary, .btn-outline-secondary, .btn-outline-danger {
+  margin-right: 5px;
+}
+
+.wallpaper{  
+  background-image: url(./assets/chef3.jpg);
+  background-size: cover;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+}
