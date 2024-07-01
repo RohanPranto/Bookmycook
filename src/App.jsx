@@ -10,6 +10,7 @@ import Profile from './components/Profile';
 import FindCook from './components/FindCook';
 import ChefSkills from './components/ChefSkills';
 import Navbar from './components/Navbar';
+import Cook from './components/Cook';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Route path="/customer" element={<Customer />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/chefskills" element={<ChefSkills />} />
+          <Route path="/Cook/:cookId" element={<Cook />} />
+
         </Routes>
       </div>
     </Router>

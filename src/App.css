@@ -23,9 +23,20 @@ body{
   font-weight: 500;
   font-size: 1.15rem;
   font-family: var(--primary);
-  
   color: white;
 }
+
+.nav-link:hover{
+  color: gray;
+}
+.dropdown-menu{
+  color: black;
+}
+.dropdown-menu a:hover{
+  color: white;
+  background-color: var(--red2);
+}
+
 h1,h5{
   font-family: var(--secondary);
 }
@@ -46,17 +57,20 @@ h2{
   background-position: center;
 }
 
-span{
+.card-title span{
   font-family: var(--pacifica);
   color: var(--red1);
   font-size: larger;
+}
+.hero-div span{
+  filter: drop-shadow(5px 5px 4px black);
 }
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 

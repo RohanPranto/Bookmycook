@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import AvailableCooks from './AvailableCooks';
 
 function FindCook() {
   const [userLocation, setUserLocation] = useState(null);
@@ -43,20 +44,9 @@ function FindCook() {
       <div className="container mt-5 text-center">
         <h2 className='display-5'>Available Cooks Nearby</h2>
         {locationName && (
-          <p>Your current location: {locationName}</p>
+          <p>Your current location: <p style={{display:"inline"}} className='text-danger fw-bold'>{locationName}</p></p>
         )}
-        <div className="row">
-          <div className="col-lg-4">
-            <div className="card">
-              <img src="..." className="card-img-top" alt="..." />
-              <div className="card-body">
-                <h5 className="card-title">Cook Name</h5>
-                <p className="card-text">Location: {locationName ? locationName : 'Fetching location...'}</p>
-                <a href="#" className="btn btn-primary">Hire</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <AvailableCooks userLocation={userLocation} />
       </div>
     </div>
   );

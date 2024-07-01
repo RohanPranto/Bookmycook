@@ -102,13 +102,13 @@ function Profile() {
             <h1 className="display-2">Profile</h1>
             {profileExists ? (
               <div>
-                <p className='text-secondary'><i className='bx bxs-info-circle' ></i>Profile already exists</p>
-                <h2><i className='bx bxs-user-rectangle'></i>{formData.name}</h2>
-                <h2><i className='bx bxl-gmail' ></i>{formData.email}</h2>
-                <h2><i className='bx bxs-phone-call' ></i>{formData.phone}</h2>
-                <h2><i className='bx bxs-home'></i>{formData.address}</h2>
-                <h2><i className='bx bxs-category' ></i>{formData.userType}</h2>
-                <h2><i className='bx bx-world' ></i>{formData.pincode}</h2>
+                <p className='text-secondary'><i className='bx bxs-info-circle me-2' ></i>Profile already exists</p>
+                <h2><i className='bx bxs-user-rectangle me-2'></i>{formData.name}</h2>
+                <h2><i className='bx bxl-gmail me-2' ></i>{formData.email}</h2>
+                <h2><i className='bx bxs-phone-call me-2' ></i>{formData.phone}</h2>
+                <h2><i className='bx bxs-home me-2'></i>{formData.address}</h2>
+                <h2><i className='bx bxs-category me-2' ></i>{formData.userType}</h2>
+                <h2><i className='bx bx-world me-2' ></i>{formData.pincode}</h2>
                 <br /><br />
                 <Link className='btn btn-danger' to={formData.userType === 'cook' ? "/chefskills" : "/findcook"}>
                   Continue<i className='bx bx-right-arrow-alt'></i>
