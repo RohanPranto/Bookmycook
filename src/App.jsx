@@ -11,6 +11,7 @@ import FindCook from './components/FindCook';
 import ChefSkills from './components/ChefSkills';
 import Navbar from './components/Navbar';
 import Cook from './components/Cook';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/Cook/:cookId" element={<Cook />} />
 
         </Routes>
+        <Footer/>
       </div>
     </Router>
   );

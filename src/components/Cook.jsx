@@ -67,7 +67,7 @@ function Cook() {
   return (
     <div>
       <div style={{ height: "65px", backgroundColor: "#dc3545" }}></div>
-      <div className="container cook-container">
+      <div className="container cook-container mb-5">
         <div className="row mt-4">
           <div className="col-lg-8">
             <div className="card mb-4">

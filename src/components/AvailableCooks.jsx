@@ -44,7 +44,7 @@ function AvailableCooks() {
   }
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 mb-5">
       <div className="row">
         {cooks.map((cook) => (
           <div className="col-lg-4 mb-4" key={cook.id}>
