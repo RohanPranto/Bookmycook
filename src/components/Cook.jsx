@@ -88,7 +88,7 @@ function Cook() {
     emailjs.send('service_sabzhu2', 'template_dvxaa3v', templateParams, 'aFEb088m1p4wXNETC')
       .then((response) => {
         console.log('Email sent successfully!', response.status, response.text);
-        alert('Booking request sent successfully!');
+        alert('Booking request sent successfully! Wait for the cook to contact you.');
       }, (error) => {
         console.error('Failed to send email.', error);
         alert('Failed to send booking request.');

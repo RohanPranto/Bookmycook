@@ -24,6 +24,10 @@ function Profile() {
       setUser(user);
       if (user) {
         fetchProfileData(user.uid);
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          email: user.email,
+        }));
       } else {
         setProfileExists(false);
       }
@@ -108,7 +112,7 @@ function Profile() {
                 <h2><i className='bx bxs-home me-2'></i>{formData.address}</h2>
                 <h2><i className='bx bxs-category me-2' ></i>{formData.userType}</h2>
                 <h2><i className='bx bx-world me-2' ></i>{formData.pincode}</h2>
-                <br /><br />
+                <br />
                 <Link className='btn btn-danger' to={formData.userType === 'cook' ? "/chefskills" : "/findcook"}>
                   Continue<i className='bx bx-right-arrow-alt'></i>
                 </Link>
@@ -120,7 +124,7 @@ function Profile() {
                 </div>
                 
                 <div className="mb-3">
-                  <input type="email" className="form-control" id="email" name="email" placeholder='Email' value={formData.email} onChange={handleChange} required />
+                  <input type="email" className="form-control" id="email" name="email" placeholder='Email' value={formData.email} onChange={handleChange} disabled required />
                 </div>
                 <div className="mb-3">
                   <input type="tel" className="form-control" id="phone" name="phone" placeholder='Phone' value={formData.phone} onChange={handleChange} required />
