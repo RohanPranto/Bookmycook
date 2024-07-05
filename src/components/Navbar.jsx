@@ -117,9 +117,9 @@ function Navbar() {
             <div className="modal-body">
               <form onSubmit={isRegistering ? handleRegister : handleEmailLogin}>
                 <div className="mb-3">
-                  <label htmlFor="email" className="form-label">Email address</label>
                   <input
                     type="email"
+                    placeholder='Email'
                     className="form-control"
                     id="email"
                     value={email}
@@ -128,9 +128,9 @@ function Navbar() {
                   />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="password" className="form-label">Password</label>
                   <input
                     type="password"
+                    placeholder='Password'
                     className="form-control"
                     id="password"
                     value={password}
