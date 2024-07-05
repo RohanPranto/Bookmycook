@@ -1,13 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { firestore, doc, getDoc } from "../../firebase";
+import { firestore, doc, getDoc, auth } from "../../firebase";
 import emailjs from "emailjs-com";
 
 function Cook() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    userType: '',
+    userProfilePic: '',
+    pincode: '',
+    age: '',
+  });
   const [cook, setCook] = useState(null);
   const { cookId } = useParams();
   const [loading, setLoading] = useState(true);
-
+  const [profileExists, setProfileExists] = useState(false);
+  const [user, setUser] = useState(null);
+  const [bookingLoading, setBookingLoading] = useState(false);
   useEffect(() => {
     const fetchCook = async () => {
       try {
@@ -27,17 +39,50 @@ function Cook() {
     fetchCook();
   }, [cookId]);
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+      if (user) {
+        fetchProfileData(user.uid);
+        console.log("User is signed in:", formData);
+      } else {
+        setProfileExists(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const fetchProfileData = async (uid) => {
+    try {
+      const userRef = doc(firestore, 'users', uid);
+      const docSnap = await getDoc(userRef);
+      if (docSnap.exists()) {
+        const userData = docSnap.data();
+        setFormData(userData);
+        setProfileExists(true);
+      } else {
+        setProfileExists(false);
+      }
+    } catch (error) {
+      console.error("Error fetching profile data:", error);
+    }
+  };
+
   const handleRequestBooking = () => {
     if (!cook) {
       console.error("No cook data available to send email.");
       return;
     }
-
+    setBookingLoading(true);
     const templateParams = {
       to_email: cook.email, // Cook's email address
       cook_name: cook.name, // Cook's name
-      user_name: "Your Name", // Replace with the name of the user requesting the booking
-      message: `You have a new booking request from "Your Name".` // Customize the message as needed
+      user_name: formData.name,
+      user_address:formData.address,
+      user_phone: formData.phone,
+      user_pincode: formData.pincode,
+      message: `Booking request from ${formData.name}. Customer address is ${formData.address} and pincode is ${formData.pincode}. Please contact them at ${formData.phone} or ${formData.email}. `,
     };
 
     emailjs.send('service_sabzhu2', 'template_dvxaa3v', templateParams, 'aFEb088m1p4wXNETC')
@@ -47,6 +92,9 @@ function Cook() {
       }, (error) => {
         console.error('Failed to send email.', error);
         alert('Failed to send booking request.');
+      })
+      .finally(() => {
+        setBookingLoading(false);
       });
   };
 
@@ -171,7 +219,21 @@ function Cook() {
                 </div>
               </div>
             </div>
-            <button className="btn w-100 btn-danger" onClick={handleRequestBooking}><i className='bx bx-navigation'></i> Request a Booking</button>
+            <button className="btn w-100 btn-danger" onClick={handleRequestBooking} disabled={bookingLoading}>
+  {bookingLoading ? (
+    <>
+      <div className="spinner-border spinner-border-sm text-light" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div> 
+      Requesting...
+    </>
+  ) : (
+    <>
+      <i className="bx bx-navigation"></i> Request a Booking
+    </>
+  )}
+</button>
+
           </div>
         </div>
       </div>

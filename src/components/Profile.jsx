@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import { auth, firestore, doc, setDoc, getDoc } from '../../firebase'; // Adjust the path if necessary
-import chefimage2 from '../assets/chef4.jpg';
 import { Link } from 'react-router-dom';
 
 function Profile() {
@@ -156,7 +155,6 @@ function Profile() {
           </div>
           <div className="col-lg-6 wallpaper" style={{height:""}}>
             <div className="profile-image text-end">
-              {/* <img src={chefimage2} alt="Profile" className="img-fluid" /> */}
             </div>
           </div>
         </div>
