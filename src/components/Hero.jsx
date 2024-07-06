@@ -9,6 +9,7 @@ function Hero() {
           <h1 className="pt-5"><span>BookMyCook</span></h1>
           <h2 className="pt-3 text-light">Find the best cook near you</h2>
           <SearchBox />
+          
         </div>
       </div>
       {/* <CookCards /> */}

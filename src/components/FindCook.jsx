@@ -41,7 +41,7 @@ function FindCook() {
         {/* nothing here */}
       </div>
 
-      <div className="container mt-5 text-center">
+      <div className="container mt-5 mb-5 text-center">
         <h2 className='display-5'>Available Cooks Nearby</h2>
         {locationName && (
           <p>Your current location: <p style={{display:"inline"}} className='text-danger fw-bold'>{locationName}</p></p>

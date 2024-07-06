@@ -92,7 +92,7 @@ function Navbar() {
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
-              <li className="nav-item">
+              <li className="nav-item ms-2">
                 {user ? (
                   <div className="user-info">
                     <span className="nav-link">Hello, {user.displayName || user.email}</span>
@@ -138,7 +138,7 @@ function Navbar() {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-danger w-100">
+                <button type="submit"  data-bs-dismiss="modal" className="btn btn-danger w-100">
                   {isRegistering ? 'Register' : 'Login'}
                 </button>
                 <p style={{textDecoration:"none"}} type="button" className="text-center w-100 mt-2 text-primary" onClick={() => setIsRegistering(!isRegistering)}>

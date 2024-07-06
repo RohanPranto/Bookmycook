@@ -10,6 +10,7 @@ function GettingStarted() {
         <div className="col-lg-7">
           <div className="getting-started-content">
             <h2 className='display-2'>No more<br/><em>boring</em> meals!</h2>
+            <br/>
             <Link to="/profile" className="btn btn-danger">Getting Started</Link>
           </div>
         </div>
