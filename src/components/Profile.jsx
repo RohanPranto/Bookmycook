@@ -37,6 +37,7 @@ function Profile() {
     return () => unsubscribe();
   }, []);
 
+  // Fetch profile data if it exists
   const fetchProfileData = async (uid) => {
     const userRef = doc(firestore, 'users', uid);
     const docSnap = await getDoc(userRef);
@@ -57,6 +58,7 @@ function Profile() {
     });
   };
 
+   // Save profile data
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

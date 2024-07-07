@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { firestore, doc, getDoc, auth } from "../../firebase";
+import { firestore, doc, getDoc, auth, setDoc, collection } from "../../firebase";
 import emailjs from "emailjs-com";
 import CooksProfile from "./CooksProfile";
 
@@ -71,7 +71,37 @@ function Cook() {
     }
   };
 
-  const handleRequestBooking = () => {
+  const handleRequestBooking = async (e) => {
+
+    e.preventDefault(); // Move this to the top
+    try {
+      if (user) {
+        const requestData = {
+          cookId: cookId,
+          customerId: user.uid,
+          customerDetails: {
+            name: formData.name,
+            email: formData.email,
+            address: formData.address,
+            phone: formData.phone,
+            pincode: formData.pincode,
+          },
+          status: 'pending',
+          timestamp: new Date(),
+        };
+  
+        const requestRef = doc(collection(firestore, 'requests'));
+        await setDoc(requestRef, requestData);
+        console.log('User added to request collection');
+      } else {
+        console.log('User not logged in.');
+      }
+    } catch (error) {
+      console.error('Error adding request:', error);
+    } finally {
+      setBookingLoading(false);
+    }
+    
     if (!cook) {
       console.error("No cook data available to send email.");
       return;
@@ -90,7 +120,7 @@ function Cook() {
     emailjs.send('service_sabzhu2', 'template_dvxaa3v', templateParams, 'aFEb088m1p4wXNETC')
       .then((response) => {
         console.log('Email sent successfully!', response.status, response.text);
-        alert('Booking request sent successfully! Wait for the cook to contact you.');
+        alert('Booking request sent successfully! Wait for the cook to contact you.'); // This alert is in the correct place
       }, (error) => {
         console.error('Failed to send email.', error);
         alert('Failed to send booking request.');
@@ -98,6 +128,8 @@ function Cook() {
       .finally(() => {
         setBookingLoading(false);
       });
+
+
   };
 
   if (loading) {
