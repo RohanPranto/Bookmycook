@@ -1,54 +1,66 @@
-/* font-family: "Open Sans", sans-serif;
-font-family: "Raleway", sans-serif; */
+/* Global Variables */
 :root {
   --secondary: 'Open Sans', sans-serif;
- --pacifica: 'Pacifico', cursive;
+  --pacifica: 'Pacifico', cursive;
   --primary: 'Raleway', sans-serif;
   --red1: #C21010;
   --red2: #dc3545;
-  --white:#FFFDE3;
+  --white: #FFFDE3;
   --cream: #CFE8A9;
 }
-body{
+
+/* Body */
+body {
   background-color: #f8f9fa;
 }
-/* Navbar.css */
+
+/* Navbar */
 .navbar-absolute {
   position: absolute;
   width: 100%;
   z-index: 1000;
 }
-
-.nav-link{
+.navbar{
+  background-color: rgba(0, 0, 0, 0.317);
+  box-Shadow: 0px 5px 15px -5px rgba(0,0,0,0.3);
+}
+.nav-link {
   font-weight: 500;
   font-size: 1.15rem;
   font-family: var(--primary);
   color: white;
 }
 
-.nav-link:hover{
-  color: gray;
+.nav-link:hover {
+  color: rgb(239, 53, 53);
 }
-.dropdown-menu{
+
+.dropdown-menu {
   color: black;
 }
-.dropdown-menu a:hover{
+
+.dropdown-menu a:hover {
   color: white;
   background-color: var(--red2);
 }
 
-h1,h5{
+/* Headings */
+h1, h5 {
   font-family: var(--secondary);
 }
-h2{
+
+h2 {
   font-family: var(--primary);
   font-weight: 300;
 }
-.text-center h1{
+
+.text-center h1 {
   font-family: var(--pacifica);
   color: white;
   font-size: 3.5rem;
 }
+
+/* Hero Section */
 .hero-div {
   height: 60vh;
   background-repeat: no-repeat;
@@ -57,14 +69,11 @@ h2{
   background-position: center;
 }
 
-.card-title span{
-  font-family: var(--pacifica);
-  color: var(--red1);
-  font-size: larger;
-}
-.hero-div span{
+.hero-div span {
   filter: drop-shadow(5px 5px 4px black);
 }
+
+/* Cards */
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -79,23 +88,31 @@ h2{
   box-shadow: none; 
 }
 
+.card-title span {
+  font-family: var(--pacifica);
+  color: var(--red1);
+  font-size: larger;
+}
 
-
-
+/* User Info */
 .user-info {
   display: flex;
   align-items: center;
 }
 
-.user-info span {
+.user-info .nav-link {
   margin-right: 10px;
 }
 
-.btn-outline-primary, .btn-outline-secondary, .btn-outline-danger {
+/* Buttons */
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-danger {
   margin-right: 5px;
 }
 
-.wallpaper{  
+/* Wallpaper and Sections */
+.wallpaper {  
   background-image: url(./assets/chef3.jpg);
   background-size: cover;
   height: 100vh;
@@ -104,7 +121,7 @@ h2{
   overflow-y: hidden;
 }
 
-.findcook{
+.findcook {
   background-image: url(./assets/findcookbg.png);
   background-size: cover;
   height: 60vh;

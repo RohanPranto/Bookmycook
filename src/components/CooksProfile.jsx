@@ -4,8 +4,7 @@ const CooksProfile = ({ cook, handleRequestBooking, bookingLoading, cardImages, 
   return (
     <div className='pb-5' style={{backgroundColor: "#dc3545"}}>
       <div style={{
-  height: "65px",
-  boxShadow: "0px 5px 15px -5px rgba(0,0,0,0.3)", // Shadow effect with blur at the bottom
+  height: "65px",// Shadow effect with blur at the bottom
 }}>
   {/* Content of your div */}
 </div>

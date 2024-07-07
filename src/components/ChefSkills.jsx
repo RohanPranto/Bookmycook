@@ -147,7 +147,7 @@ function ChefSkills() {
     <div>
       <div className="row g-0">
         <div
-          className="col-lg-6 p-5"
+          className="col-lg-6 p-5 mt-4"
           style={{ height: "100vh", overflowY: "auto" }}
         >
           <h1 className="display-2">Complete Profile</h1>
