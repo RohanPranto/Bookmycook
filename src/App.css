@@ -1,6 +1,6 @@
 /* Global Variables */
 :root {
-  --secondary: 'Open Sans', sans-serif;
+  --secondary: "Red Hat Display", sans-serif;
   --pacifica: 'Pacifico', cursive;
   --primary: 'Raleway', sans-serif;
   --red1: #C21010;
@@ -20,10 +20,7 @@ body {
   width: 100%;
   z-index: 1000;
 }
-.navbar{
-  background-color: rgba(0, 0, 0, 0.317);
-  box-Shadow: 0px 5px 15px -5px rgba(0,0,0,0.3);
-}
+
 .nav-link {
   font-weight: 500;
   font-size: 1.15rem;
@@ -32,13 +29,22 @@ body {
 }
 
 .nav-link:hover {
-  color: rgb(239, 53, 53);
+  color: rgb(205, 176, 176);
 }
 
 .dropdown-menu {
   color: black;
 }
-
+.cook-container p{
+  font-family: var(--secondary);
+}
+.top{
+  background-image: url(./assets/dashboard.png);
+  height: 250px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 -100px;
+}
 .dropdown-menu a:hover {
   color: white;
   background-color: var(--red2);
@@ -82,7 +88,10 @@ h2 {
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-
+.dashboard .card:hover {
+  transform: none;
+  box-shadow: none; 
+}
 .cook-container .card:hover {
   transform: none;
   box-shadow: none; 

@@ -89,7 +89,7 @@ function Navbar() {
                   <Link className="dropdown-item" to="/findcook">Find Cook</Link>
                   <Link className="dropdown-item" to="/chefskills">Chef Skills</Link>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
-                  <li><a className="dropdown-item" href="#">Something else here</a></li>
+                  <Link className="dropdown-item" to="/findCustomer">Dashboard</Link>
                 </ul>
               </li>
               <li className="nav-item ms-2">

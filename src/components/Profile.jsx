@@ -103,7 +103,7 @@ function Profile() {
     <div>
       <div>
         <div className="row g-0">
-          <div className="col-lg-6 p-5 mt-4">
+          <div className="col-lg-6 p-5">
             <h1 className="display-2">Profile</h1>
             {profileExists ? (
               <div>

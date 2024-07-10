@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { auth, firestore, doc, setDoc, getDoc } from "../../firebase"; // Adjust the path if necessary
 import chefimage2 from "../assets/chef4.jpg";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import cuisines from "../data/cuisine";
 import dieteries from "../data/dietery";
 import techniques from "../data/technique";
@@ -40,6 +40,7 @@ function ChefSkills() {
   const [isSaving, setIsSaving] = useState(false);
   const [profileExists, setProfileExists] = useState(false);
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -65,12 +66,7 @@ function ChefSkills() {
         ...prevData,
         ...userData, // Merge existing profile data with new form fields
       }));
-      // Check if cuisineSpecialties array exists
-      if (userData.cuisineSpecialties && userData.cuisineSpecialties.length > 0) {
-        setProfileExists(true);
-      } else {
-        setProfileExists(false);
-      }
+      setProfileExists(true);
     } else {
       setProfileExists(false);
     }
@@ -108,6 +104,34 @@ function ChefSkills() {
     }
   };
 
+  const isProfileComplete = () => {
+    // Check if all required fields are filled
+    const requiredFields = [
+      "name",
+      "email",
+      "phone",
+      "address",
+      "userType",
+      "pincode",
+      "aadhaar",
+      "cuisineSpecialties",
+      "dietarySpecialties",
+      "cookingTechniques",
+      "experienceLevel",
+      "previousEmployment",
+      "availableLocations",
+      "workingHours"
+    ];
+
+    for (let field of requiredFields) {
+      if (!formData[field] || (Array.isArray(formData[field]) && formData[field].length === 0)) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -120,6 +144,12 @@ function ChefSkills() {
 
         setIsSaving(false);
         alert("Profile saved successfully!");
+
+        if (isProfileComplete()) {
+          navigate("/findCustomer");
+        } else {
+          alert("Please complete profile");
+        }
       } else {
         alert("User not logged in.");
       }
@@ -183,12 +213,18 @@ function ChefSkills() {
               </h2>
               <br />
               <br />
-              <Link
+              <button
                 className="btn btn-lg btn-danger"
-                to={formData.userType === "cook" ? "/chefskills" : "/findcook"}
+                onClick={() => {
+                  if (isProfileComplete()) {
+                    navigate("/findCustomer");
+                  } else {
+                    alert("Please complete profile");
+                  }
+                }}
               >
-                Continue<i className="bx bx-right-arrow-alt"></i>
-              </Link>
+                Continue to Dashboard<i className="bx bx-right-arrow-alt"></i>
+              </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit}>

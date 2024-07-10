@@ -5,7 +5,7 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 
 import './App.css';
 import Hero from './components/Hero';
-import Customer from './components/Customer';
+import FindCustomer from './components/FindCustomer';
 import Profile from './components/Profile';
 import FindCook from './components/FindCook';
 import ChefSkills from './components/ChefSkills';
@@ -21,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/findcook" element={<FindCook />} />
-          <Route path="/customer" element={<Customer />} />
+          <Route path="/findcustomer" element={<FindCustomer />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/chefskills" element={<ChefSkills />} />
           <Route path="/Cook/:cookId" element={<Cook />} />
